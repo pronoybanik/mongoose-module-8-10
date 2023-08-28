@@ -7,7 +7,6 @@ const mongoose = require("mongoose");
 app.use(express.json());
 app.use(cors());
 
-
 app.get("/", (req, res) => {
     res.send("Route is working! YaY!");
 });
