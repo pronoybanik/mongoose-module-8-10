@@ -1,7 +1,14 @@
-const mongoose = require('mongoose');
-const { ObjectId } = mongoose.Schema.Types;
+const mongoose = require('mongoose')
+const { ObjectId } = mongoose.Schema.Types
 // schema design
-const productSchema = mongoose.Schema({
+
+
+const stockSchema = mongoose.Schema({
+    productId: {
+        type: ObjectId,
+        required: true,
+        ref: 'Product'
+    },
     name: {
         type: String,
         required: [true, "Please provide a name for this product."],
@@ -44,7 +51,16 @@ const productSchema = mongoose.Schema({
             message: "Please provide valid image urls"
         }
     }],
-
+    price: {
+        type: Number,
+        required: true,
+        min: [0, "Product price can't be negative"]
+    },
+    quantity: {
+        type: Number,
+        required: true,
+        min: [0, "Product quantity can't be negative"]
+    },
     category: {
         type: String,
         required: true,
@@ -59,6 +75,42 @@ const productSchema = mongoose.Schema({
             type: ObjectId,
             ref: "Brand",
             required: true,
+        }
+    },
+    status: {
+        type: string,
+        required: true,
+        enum: {
+            values: ["in-stock", "out-of-stock", "discontinued"],
+            message: " status can't be {VALUE} "
+        },
+    },
+    store: {
+        name: {
+            type: String,
+            trim: true,
+            required: [true, "Please provide a store name"],
+            lowercase: true,
+            enum: {
+                values: ["dhaka", "chattogram", "rajshahi", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
+                message: "{VALUE} is not a valid name"
+            }
+        },
+        id: {
+            type: ObjectId,
+            required: true,
+            ref: 'Store'
+        }
+    },
+    suppliedBy: {
+        name: {
+            type: String,
+            trim: true,
+            required: [true, "Please provide a supplier name"],
+        },
+        id: {
+            type: ObjectId,
+            ref: 'Supplier'
         }
     }
 
@@ -78,7 +130,6 @@ productSchema.pre('save', function (next) {
     next();
 })
 
+const Stock = mongoose.model('Stock', stockSchema)
 
-const Product = mongoose.model('Product', productSchema)
-
-module.exports = Product;
+module.exports = Stock;
