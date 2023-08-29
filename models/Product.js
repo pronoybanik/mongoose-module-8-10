@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Schema.Types;
+const valid = require("validator");
+
+
 // schema design
 const productSchema = mongoose.Schema({
     name: {
@@ -25,24 +28,30 @@ const productSchema = mongoose.Schema({
         }
     },
 
+    // imageURLs: [{
+    //     type: String,
+    //     required: true,
+    //     validate: {
+    //         validator: (value) => {
+    //             if (!Array.isArray(value)) {
+    //                 return false;
+    //             }
+    //             let isValid = true;
+    //             value.forEach(url => {
+    //                 if (!validator.isURL(url)) {
+    //                     isValid = false;
+    //                 }
+    //             });
+    //             return isValid;
+    //         },
+    //         message: "Please provide valid image urls"
+    //     }
+    // }],
+
     imageURLs: [{
         type: String,
         required: true,
-        validate: {
-            validator: (value) => {
-                if (!Array.isArray(value)) {
-                    return false;
-                }
-                let isValid = true;
-                value.forEach(url => {
-                    if (!validator.isURL(url)) {
-                        isValid = false;
-                    }
-                });
-                return isValid;
-            },
-            message: "Please provide valid image urls"
-        }
+        validate: [valid.isURL, "wrong url"]
     }],
 
     category: {

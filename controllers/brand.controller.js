@@ -1,4 +1,4 @@
-const { createBrandService, getBrandsService, getBrandByIdService, updateBrandService } = require("../services/brand.service");
+const { createBrandService, getBrandsService, getBrandByIdService, updateBrandService, deleteBrandByIdService } = require("../services/brand.service");
 
 exports.createBrand = async (req, res, next) => {
     try {
@@ -12,7 +12,8 @@ exports.createBrand = async (req, res, next) => {
         console.log(error)
         res.status(400).json({
             status: "fail",
-            error: "Couldn't create the brand"
+            message: "Couldn't create the brand",
+            error: error.message
         })
     }
 };
@@ -29,7 +30,8 @@ exports.getBrands = async (req, res, next) => {
         console.log(error);
         res.status(400).json({
             status: "fail",
-            error: "Couldn't get the brands",
+            message: "Couldn't get the brands",
+            error: error.message
         });
     }
 };
@@ -54,10 +56,38 @@ exports.getBrandById = async (req, res, next) => {
         console.log(error);
         res.status(400).json({
             status: "fail",
-            error: "Couldn't get the brands",
+            message: "Couldn't get the brands",
+            error: error.message
         });
     }
 };
+
+exports.deleteBrandById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+
+        const result = await deleteBrandByIdService(id);
+
+        if (!result.deletedCount) {
+            return res.status(400).json({
+                status: "fail",
+                error: "Couldn't delete the product"
+            })
+        }
+
+        res.status(200).json({
+            status: "success",
+            message: "Successfully deleted the Brand",
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "Couldn't delete the Brand",
+            error: error.message,
+        });
+    }
+};
+
 
 exports.updateBrand = async (req, res, next) => {
     const { id } = req.params;

@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
     res.send("Route is working! YaY!");
 });
 
-// app.use('/api/v1/product', productRoute);
+app.use('/api/v1/product', productRoute);
 app.use("/api/v1/brand", brandRoute);
 
 
