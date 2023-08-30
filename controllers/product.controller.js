@@ -77,7 +77,7 @@ exports.deleteProductById = async (req, res, next) => {
         res.status(200).json({
             status: "success",
             message: "Successfully deleted the product",
-            
+
         });
     } catch (error) {
         res.status(400).json({
@@ -87,6 +87,14 @@ exports.deleteProductById = async (req, res, next) => {
         });
     }
 };
+
+exports.fileUpload = async (req, res) => {
+    try {
+        return res.status(200).json(req.files)
+    } catch (error) {
+
+    }
+}
 
 
 
