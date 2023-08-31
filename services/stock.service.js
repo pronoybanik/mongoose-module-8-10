@@ -19,6 +19,11 @@ exports.createStockService = async (data) => {
     return stock;
 };
 
+exports.getStockByIdService = async (storeId) => {
+    const store = await Stock.findOne({ _id: storeId }).populate("brand.id").populate("store.id").populate("suppliedBy.id");
+    return store;
+};
+
 exports.updateStockByIdService = async (stockId, data) => {
     const result = await Stock.updateOne(
         { _id: stockId }, data, { runValidators: true, }

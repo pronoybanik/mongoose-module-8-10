@@ -2,7 +2,8 @@ const {
     getStocksService,
     createStockService,
     updateStockByIdService,
-    deleteStockByIdService
+    deleteStockByIdService,
+    getStockByIdService
 } = require("../services/stock.service");
 
 
@@ -79,6 +80,24 @@ exports.createStock = async (req, res, next) => {
     }
 };
 
+exports.getStockById = async (req, res) => {
+    const { id } = req.params;
+    
+    try {
+        const stock = await getStockByIdService(id);
+
+        res.status(200).json({
+            status: "success",
+            data: stock,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "Can't get the store",
+            error: error.message,
+        });
+    }
+};
 
 exports.updateStockById = async (req, res, next) => {
     try {

@@ -8,6 +8,7 @@ router.route('/')
     .post(StockController.createStock)
 
 router.route("/:id")
+    .get(StockController.getStockById)
     .patch(StockController.updateStockById)
     .delete(StockController.deleteStockById)
 
