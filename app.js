@@ -17,11 +17,10 @@ const storeRoute = require('./routes/store.route');
 const userRoute = require('./routes/user.route');
 
 
-
-
 app.get("/", (req, res) => {
     res.send("Route is working! YaY!");
 });
+
 
 app.use('/api/v1/product', productRoute);
 app.use("/api/v1/brand", brandRoute);

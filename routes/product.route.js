@@ -2,6 +2,8 @@ const express = require('express')
 const router = express.Router()
 const productController = require('../controllers/product.controller')
 const fileUploader = require('../middleware/fileUploader');
+const authorization = require('../middleware/authorization');
+const verifyToken = require('../middleware/verifyToken');
 
 
 router.post("/file-upload", fileUploader.single("image"), productController.fileUpload)
@@ -9,7 +11,7 @@ router.post("/file-upload", fileUploader.single("image"), productController.file
 
 router.route('/')
     .get(productController.getProducts)
-    .post(productController.createProduct)
+    .post(verifyToken, authorization("admin", "store-manage"), productController.createProduct)
 
 router.route("/:id")
     .patch(productController.updateProductById)
