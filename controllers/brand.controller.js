@@ -22,6 +22,12 @@ exports.getBrands = async (req, res, next) => {
     try {
         const brands = await getBrandsService();
 
+        if (brands.length === 0) {
+            res.status(400).json({
+                message: "There Is No Data",
+            })
+        }
+
         res.status(200).json({
             status: "success",
             data: brands

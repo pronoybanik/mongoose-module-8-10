@@ -2,7 +2,8 @@ const {
     getProductsService,
     createProductService,
     updateProductByIdService,
-    deleteProductByIdService
+    deleteProductByIdService,
+    getProductsByIdService
 } = require("../services/product.service");
 
 
@@ -10,15 +11,49 @@ exports.getProducts = async (req, res, next) => {
     try {
         const products = await getProductsService();
 
-        res.status(200).json({
-            status: "success",
-            data: products,
-        });
+        if (products.length === 0) {
+            res.status(404).json({
+                status: "fail",
+                error: "There Is No Data",
+            });
+        } else {
+            res.status(200).json({
+                status: "success",
+                data: products,
+            });
+        }
     } catch (error) {
         res.status(400).json({
             status: "fail",
-            message: "can't get the data",
+            message: "Can't get the data",
             error: error.message,
+        });
+    }
+};
+
+
+exports.getProductById = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const product = await getProductsByIdService(id);
+
+        if (!product) {
+            return res.status(400).json({
+                status: "fail",
+                error: "Couldn't find a brand with this id"
+            })
+        }
+
+        res.status(200).json({
+            status: "success",
+            data: product,
+        });
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            status: "fail",
+            message: "Couldn't get the brands",
+            error: error.message
         });
     }
 };

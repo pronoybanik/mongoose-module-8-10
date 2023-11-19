@@ -9,9 +9,10 @@ const brandSchema = mongoose.Schema({
         required: [true, "Please provide a brnad name"],
         maxLength: 100,
         unique: true,
-        lowercase: true,
+        uppercase: true,
     },
     description: String,
+    image: String,
     email: {
         type: String,
         lowercase: true,
@@ -38,7 +39,7 @@ const brandSchema = mongoose.Schema({
         type: String,
         enum: ["active", "inactive"],
         default: "active"
-    }
+    },
 }, {
     timestamps: true
 });

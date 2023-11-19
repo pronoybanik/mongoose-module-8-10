@@ -15,6 +15,7 @@ const supplierRoute = require('./routes/supplier.route');
 const stockRoute = require('./routes/stock.route');
 const storeRoute = require('./routes/store.route');
 const userRoute = require('./routes/user.route');
+const orderRoute = require('./routes/order.route');
 
 
 app.get("/", (req, res) => {
@@ -29,6 +30,7 @@ app.use("/api/v1/supplier", supplierRoute);
 app.use("/api/v1/stock", stockRoute);
 app.use("/api/v1/store", storeRoute);
 app.use("/api/v1/user", userRoute);
+app.use("/api/v1/order", orderRoute);
 
 
 

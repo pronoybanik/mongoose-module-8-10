@@ -12,9 +12,10 @@ router.post("/file-upload", fileUploader.single("image"), productController.file
 router.route('/')
     // .get(verifyToken, authorization("buyer"),productController.getProducts)
     .get(productController.getProducts)
-    .post(verifyToken, authorization("admin", "store-manage"), productController.createProduct)
+    .post(productController.createProduct)
 
 router.route("/:id")
+    .get(productController.getProductById)
     .patch(productController.updateProductById)
     .delete(productController.deleteProductById)
 

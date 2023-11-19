@@ -6,6 +6,10 @@ exports.getProductsService = async () => {
     const products = await Product.find({})
     return products;
 };
+exports.getProductsByIdService = async (id) => {
+    const products = await Product.findOne({ _id: id })
+    return products;
+};
 
 exports.createProductService = async (data) => {
     const product = await Product.create(data);
