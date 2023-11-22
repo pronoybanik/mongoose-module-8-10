@@ -11,12 +11,17 @@ const orderSchema = mongoose.Schema({
         required: true
     },
 
+    userId: {
+        type: ObjectId,
+        ref: "user",
+        required: true
+    },
+
     quantity: {
         type: Number,
         required: true
     },
 
- 
 
 }, {
     timestamps: true,

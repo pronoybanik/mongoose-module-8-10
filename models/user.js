@@ -66,6 +66,7 @@ const userSchema = mongoose.Schema(
         },
 
         shippingAddress: String,
+        presentAddress: String,
 
         imageURL: {
             type: String,
