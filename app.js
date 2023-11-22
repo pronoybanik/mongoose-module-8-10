@@ -19,6 +19,7 @@ const stockRoute = require('./routes/stock.route');
 const storeRoute = require('./routes/store.route');
 const userRoute = require('./routes/user.route');
 const orderRoute = require('./routes/order.route');
+const paymentRoute = require('./routes/payment.route');
 
 
 app.get("/", (req, res) => {
@@ -34,12 +35,13 @@ app.use("/api/v1/stock", stockRoute);
 app.use("/api/v1/store", storeRoute);
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/order", orderRoute);
+app.use("/api/v1/payment", paymentRoute);
 
 
 
 //  create token code and run bash (node app.js)
 // const crypto = require('crypto');
-// const randomBytes = crypto.randomBytes(64).toString('hex');
+// const randomBytes = crypto.randomBytes(10).toString('hex');
 // console.log(randomBytes);
 
 module.exports = app;
