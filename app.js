@@ -39,7 +39,7 @@ app.use("/api/v1/payment", paymentRoute);
 
 
 
-//  create token code and run bash (node app.js)
+// create token code and run bash (node app.js)
 // const crypto = require('crypto');
 // const randomBytes = crypto.randomBytes(10).toString('hex');
 // console.log(randomBytes);

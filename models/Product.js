@@ -27,27 +27,11 @@ const productSchema = mongoose.Schema({
             message: "unit value can't be {VALUE}, must be kg/litre/pcs/bag"
         }
     },
-    price:Number,
+    price: {
+        type: Number,
+        required: true
+    },
 
-    // imageURLs: [{
-    //     type: String,
-    //     required: true,
-    //     validate: {
-    //         validator: (value) => {
-    //             if (!Array.isArray(value)) {
-    //                 return false;
-    //             }
-    //             let isValid = true;
-    //             value.forEach(url => {
-    //                 if (!validator.isURL(url)) {
-    //                     isValid = false;
-    //                 }
-    //             });
-    //             return isValid;
-    //         },
-    //         message: "Please provide valid image urls"
-    //     }
-    // }],
 
     imageURLs: {
         type: String,

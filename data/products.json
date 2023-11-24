@@ -13,23 +13,10 @@
       "id": "633177da56be8326a827b812"
     }
   },
-  {
-    "name": "Pran Chinigura Aromatic Rice - 50kg",
-    "description": "Pran Chinigura Aromatic Rice (Polau). Fresh and Clean, Vacuum Packed. Pran Chinigura Rice can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
-    "imageURLs": [
-      "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
-      "https://chaldn.com/_mpimage/pran-nazirshail-rice-5-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48089&q=low&v=1&m=400&webp=1"
-    ],
-    "unit": "bag",
-    "category": "Rice",
-    "brand": {
-      "name": "Pran",
-      "id": "633177da56be8326a827b812"
-    }
-  },
+  
 
   {
-    "name": "Pran Nazirshail Rice - 5kg",
+    "name": "Pran Nazirshail Rice - 25kg",
     "description": "Pran Nazirshail Rice. Fresh and Clean, Vacuum Packed. Pran Chinigura Rice can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
     "imageURLs": [
       "https://chaldn.com/_mpimage/pran-nazirshail-rice-5-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48089&q=low&v=1&m=400&webp=1",
@@ -84,19 +71,8 @@
       "id": "6329f32f40244f2a44c85741"
     }
   },
-  {
-    "name": "Rupchanda Fortified Soyabean Oil - 5ltr",
-    "description": "First Vitamin A fortified Soyabean Oil. Increases immunity. Strengthens bone & teeth.",
-    "imageURLs": [
-      "https://chaldn.com/_mpimage/rupchanda-fortified-soyabean-oil-5-ltr?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D92500&q=best&v=1&m=400&webp=1"
-    ],
-    "unit": "litre",
-    "category": "Oil",
-    "brand": {
-      "name": "Rupchanda",
-      "id": "6329f4a69c503f0b7438b25e"
-    }
-  },
+
+  
 
   {
     "name": "Fresh Refined Sugar",
@@ -115,6 +91,20 @@
   {
     "name": "Teer Refined Sugar",
     "description": "Teer Refined sugar is a modern processes of without touching hand to protect the health of assurance. Fresh refined sugar is completely acid, fecal residues free and neat and clean, healthy, granulated sugar.",
+    "imageURLs": [
+      "https://chaldn.com/_mpimage/fresh-refined-sugar-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D113128&q=best&v=1&m=400&webp=1"
+    ],
+    "unit": "kg",
+    "category": "Sugar",
+    "brand": {
+      "name": "Teer",
+      "id": "63341b10ff782a369881024b"
+    }
+  },
+
+  {
+    "name": "Taaza Tree",
+    "description": "Taaza Refined sugar is a modern processes of without touching hand to protect the health of assurance. Fresh refined sugar is completely acid, fecal residues free and neat and clean, healthy, granulated sugar.",
     "imageURLs": [
       "https://chaldn.com/_mpimage/fresh-refined-sugar-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D113128&q=best&v=1&m=400&webp=1"
     ],

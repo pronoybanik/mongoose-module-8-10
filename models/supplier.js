@@ -23,7 +23,7 @@ const supplierSchema = mongoose.Schema(
             name: {
                 type: String,
                 trim: true,
-                required: true,
+                // required: true,
             },
             id: {
                 type: ObjectId,
@@ -31,7 +31,7 @@ const supplierSchema = mongoose.Schema(
                 ref: "Brand"
             }
         },
-        contactNumber: [{
+        contactNumber: {
             type: String,
             required: [true, "Please provide a contact number"],
             validate: {
@@ -39,8 +39,10 @@ const supplierSchema = mongoose.Schema(
                     return validator.isMobilePhone(value);
                 },
                 message: "Please provide a valid phone number",
-            }
-        }],
+            },
+
+        },
+
         emergencyContactNumber: {
             type: String,
             required: [true, "Please provide  a emergency contact number"],
@@ -51,10 +53,7 @@ const supplierSchema = mongoose.Schema(
                 message: "Please provide a valid phone number",
             },
         },
-        tradeLicenceNumber: {
-            type: Number,
-            required: [true, "Please provide your trade licence number"],
-        },
+       
         presentAddress: {
             type: String,
             required: [true, "Please provide your present address"],

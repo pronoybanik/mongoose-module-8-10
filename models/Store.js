@@ -3,7 +3,7 @@ const validator = require("validator");
 const { ObjectId } = mongoose.Schema.Types;
 
 const storeSchema = mongoose.Schema({
-    name: {
+    storeName: {
         type: String,
         trim: true,
         required: [true, "Please provide a store name"],
@@ -20,7 +20,7 @@ const storeSchema = mongoose.Schema({
         default: "active"
     },
     manager: {
-        name: String,
+        managerName: String,
         contactNumber: String,
         id: {
             type: ObjectId,
