@@ -25,7 +25,7 @@ const paymentItemSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    orderData: [orderItemSchema], 
+    orderData: [orderItemSchema],
     firstName: {
         type: String,
         required: true,
@@ -50,6 +50,11 @@ const paymentItemSchema = new mongoose.Schema({
         type: String,
         enum: ['paid', 'unpaid'],
         default: 'unpaid',
+    },
+    shippingStatus: {
+        type: String,
+        enum: ['processing', 'shipped', "delivered"],
+        default: 'processing',
     },
 });
 

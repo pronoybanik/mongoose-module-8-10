@@ -3,7 +3,7 @@ const Supplier = require("../models/supplier");
 
 
 exports.getSuppliersService = async () => {
-    const Suppliers = await Supplier.find({}).populate("brand");
+    const Suppliers = await Supplier.find({}).populate("brand.id");
     return Suppliers;
 };
 

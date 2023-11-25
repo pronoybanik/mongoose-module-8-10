@@ -40,6 +40,8 @@ const supplierSchema = mongoose.Schema(
                 },
                 message: "Please provide a valid phone number",
             },
+            minLength: [10, "Number is too small"],
+            maxLength: [11, "Number is too large"],
 
         },
 
@@ -52,8 +54,10 @@ const supplierSchema = mongoose.Schema(
                 },
                 message: "Please provide a valid phone number",
             },
+            minLength: [11, "Number is too large"],
+            maxLength: [11, "Number is too large"],
         },
-       
+
         presentAddress: {
             type: String,
             required: [true, "Please provide your present address"],

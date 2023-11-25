@@ -6,7 +6,7 @@ exports.OrderService = async (data) => {
 };
 
 exports.getOrderService = async () => {
-    const order = await Order.find({}).populate("productId")
+    const order = await Order.find({}).populate('productId')   
     return order;
 };
 
