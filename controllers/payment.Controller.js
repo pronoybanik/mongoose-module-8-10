@@ -1,5 +1,5 @@
 const PaymentItem = require("../models/Payment");
-const { OrderPaymentService, getOrderPaymentService, successService } = require("../services/payment.service");
+const { OrderPaymentService, getOrderPaymentService, successService, deleteOrderPaymentService } = require("../services/payment.service");
 const SSLCommerzPayment = require('sslcommerz-lts')
 const crypto = require('crypto');
 
@@ -91,6 +91,31 @@ exports.getOrderPayment = async (req, res, next) => {
     }
 };
 
+exports.deleteOrderPayment = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const product = await deleteOrderPaymentService(id);
+
+        if (!product) {
+            return res.status(400).json({
+                status: "fail",
+                error: "Couldn't delete order product"
+            })
+        }
+
+        res.status(200).json({
+            status: "success",
+            data: product,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "Couldn't get the brands",
+            error: error.message
+        });
+    }
+};
+
 
 // exports.success = async (req, res, next) => {
 //     try {
@@ -113,31 +138,7 @@ exports.getOrderPayment = async (req, res, next) => {
 //     }
 // };
 
-// exports.deleteOrder = async (req, res, next) => {
-//     try {
-//         const { id } = req.params
-//         const product = await deleteOrderService(id);
 
-//         if (!product) {
-//             return res.status(400).json({
-//                 status: "fail",
-//                 error: "Couldn't delete order product"
-//             })
-//         }
-
-//         res.status(200).json({
-//             status: "success",
-//             data: product,
-//         });
-//     } catch (error) {
-//         console.log(error);
-//         res.status(400).json({
-//             status: "fail",
-//             message: "Couldn't get the brands",
-//             error: error.message
-//         });
-//     }
-// };
 
 
 

@@ -123,7 +123,7 @@ userSchema.methods.comparePassword = function (password, hash) {
 //   return token;
 // };
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("acc-user", userSchema);
 
 module.exports = User;
 

@@ -10,8 +10,8 @@ router.route('/')
     .post(paymentController.createOrderPayment)
 
 
-// router.route('/success/:id')
-// .patch(paymentController.success)
+router.route('/:id')
+    .delete(paymentController.deleteOrderPayment)
 
 
 module.exports = router;

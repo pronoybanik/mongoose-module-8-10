@@ -10,6 +10,11 @@ exports.getOrderPaymentService = async () => {
     return order;
 };
 
+exports.deleteOrderPaymentService = async (id) => {
+    const order = await PaymentItem.deleteOne({ _id: id })
+    return order;
+};
+
 // exports.successService = async (id) => {
 //     console.log("data 2", id);
 //     const result = await PaymentItem.updateOne(
@@ -25,7 +30,3 @@ exports.getOrderPaymentService = async () => {
 //     return result;
 // };
 
-// exports.deleteOrderService = async (id) => {
-//     const order = await Order.deleteOne({ _id: id })
-//     return order;
-// };
