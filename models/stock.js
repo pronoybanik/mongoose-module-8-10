@@ -4,11 +4,11 @@ const validator = require("validator")
 // schema design
 
 const stockSchema = mongoose.Schema({
-    productId: {
-        type: ObjectId,
-        required: true,
-        ref: 'Product'
-    },
+    // productId: {
+    //     type: ObjectId,
+    //     required: true,
+    //     ref: 'Product'
+    // },
     name: {
         type: String,
         required: [true, "Please provide a name for this product."],
@@ -20,6 +20,12 @@ const stockSchema = mongoose.Schema({
     description: {
         type: String,
         required: true
+    },
+
+    quantity: {
+        type: Number,
+        required: true,
+        min: [0, "Product quantity can't be negative"]
     },
 
     unit: {
@@ -41,21 +47,17 @@ const stockSchema = mongoose.Schema({
         required: true,
         min: [0, "Product price can't be negative"]
     },
-    quantity: {
-        type: Number,
-        required: true,
-        min: [0, "Product quantity can't be negative"]
-    },
+   
     category: {
         type: String,
         required: true,
     },
 
     brand: {
-        name: {
-            type: String,
-            required: true,
-        },
+        // name: {
+        //     type: String,
+        //     required: true,
+        // },
         id: {
             type: ObjectId,
             ref: "Brand",
@@ -70,31 +72,16 @@ const stockSchema = mongoose.Schema({
             values: ["in-stock", "out-of-stock", "discontinued"],
             message: " status can't be {VALUE} "
         },
+        default: "in-stock"
     },
 
-    store: {
-        name: {
-            type: String,
-            trim: true,
-            required: [true, "Please provide a store name"],
-            lowercase: true,
-            enum: {
-                values: ["dhaka", "chattogram", "rajshahi", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
-                message: "{VALUE} is not a valid name"
-            }
-        },
-        id: {
-            type: ObjectId,
-            required: true,
-            ref: 'Store'
-        }
-    },
-    suppliedBy: {
-        name: {
-            type: String,
-            trim: true,
-            required: [true, "Please provide a supplier name"],
-        },
+
+    supplied: {
+        // name: {
+        //     type: String,
+        //     trim: true,
+        //     required: [true, "Please provide a supplier name"],
+        // },
         id: {
             type: ObjectId,
             ref: 'Supplier'

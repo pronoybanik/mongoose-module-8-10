@@ -22,7 +22,7 @@ const supplierSchema = mongoose.Schema(
         brand: {
             name: {
                 type: String,
-                trim: true,
+                // trim: true,
                 // required: true,
             },
             id: {
@@ -40,8 +40,7 @@ const supplierSchema = mongoose.Schema(
                 },
                 message: "Please provide a valid phone number",
             },
-            minLength: [10, "Number is too small"],
-            maxLength: [11, "Number is too large"],
+         
 
         },
 
@@ -54,8 +53,7 @@ const supplierSchema = mongoose.Schema(
                 },
                 message: "Please provide a valid phone number",
             },
-            minLength: [11, "Number is too large"],
-            maxLength: [11, "Number is too large"],
+         
         },
 
         presentAddress: {

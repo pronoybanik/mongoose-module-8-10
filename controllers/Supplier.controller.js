@@ -6,7 +6,8 @@ exports.createSupplier = async (req, res, next) => {
 
         res.status(200).json({
             status: "success",
-            message: "Successfully created the Supplier"
+            message: "Successfully created the Supplier",
+            data: result
         })
     } catch (error) {
         console.log(error)
