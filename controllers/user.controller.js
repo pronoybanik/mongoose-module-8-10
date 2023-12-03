@@ -1,5 +1,5 @@
 
-const { signupService, findUserByEmail, findUserByToken, getAllUserService } = require("../services/user.service");
+const { signupService, findUserByEmail, findUserByToken, getAllUserService, getUserByIdService } = require("../services/user.service");
 const { generateToken } = require("../utils/token");
 // const { sendMailWithGmail, sendMailWithMailGun } = require("../utils/email");
 // const { generateToken } = require("../utils/token");
@@ -125,6 +125,22 @@ exports.getAllUser = async (req, res) => {
         const user = await getAllUserService();
         console.log(user);
         // const { password: pw, ...userData } = user.toObject();
+        res.status(200).json({
+            status: "success",
+            data: user,
+        });
+    } catch (error) {
+        res.status(500).json({
+            status: "fail",
+            error: error.message,
+        });
+    }
+};
+
+exports.getUserById = async (req, res) => {
+    try {
+        const user = await getUserByIdService(req.params.id);
+       
         res.status(200).json({
             status: "success",
             data: user,

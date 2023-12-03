@@ -54,11 +54,11 @@ const paymentItemSchema = new mongoose.Schema({
     shippingStatus: {
         type: String,
         enum: ['processing', 'shipped', "delivered"],
-        default: 'processing',
+        default: 'save',
     },
 });
 
 // Define the payment item model based on the payment item schema
-const PaymentItem = mongoose.model('PaymentItem', paymentItemSchema);
+const PaymentItem = mongoose.model('PaymentInfo', paymentItemSchema);
 
 module.exports = PaymentItem;

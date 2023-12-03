@@ -11,6 +11,7 @@ exports.getStocks = async (req, res, next) => {
     try {
 
         let filters = { ...req.query };
+        // console.log("stock",filters);
         const excludeFields = ['sort', 'page', 'limit']
         excludeFields.forEach(field => delete filters[field])
 

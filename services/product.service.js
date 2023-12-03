@@ -2,9 +2,20 @@ const Brand = require("../models/Brand");
 const Product = require("../models/Product");
 
 
-exports.getProductsService = async () => {
-    const products = await Product.find({})
-    return products;
+exports.getProductsService = async (filters, queries) => {
+    console.log(filters, queries);
+    const products = await Product.find(filters)
+        .skip(queries.skip)
+        .limit(queries.limit)
+        .select(queries.fields)
+        .sort(queries.sortBy)
+    // .populate('brand.id')
+
+    const totalProduct = await Product.countDocuments(filters);
+    const numberOfPage = Math.ceil(totalProduct / queries.limit);
+    const currentPage = Number(queries.page);
+    console.log(currentPage);
+    return { totalProduct, parPageLimitProductNumber: products.length, numberOfPage, currentPage, products };
 };
 exports.getProductsByIdService = async (id) => {
     const products = await Product.findOne({ _id: id })

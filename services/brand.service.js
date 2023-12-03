@@ -1,9 +1,20 @@
 const Brand = require("../models/Brand");
 
 
-exports.getBrandsService = async () => {
-    const brands = await Brand.find({}).populate("products");
-    return brands;
+
+
+exports.getBrandsService = async (filters, queries) => {
+    const brands = await Brand.find(filters)
+        .skip(queries.skip)
+        .limit(queries.limit)
+        .select(queries.fields)
+        .sort(queries.sortBy)
+        // .populate('brand.id')
+
+    const total = await Brand.countDocuments(filters);
+    const page = Math.ceil(total / queries.limit);
+
+    return { total, count: brands.length, page, brands };
 };
 
 exports.createBrandService = async (data) => {

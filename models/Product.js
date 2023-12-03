@@ -42,12 +42,14 @@ const productSchema = mongoose.Schema({
     category: {
         type: String,
         required: true,
+        lowercase: true,
     },
 
     brand: {
         name: {
             type: String,
-            // required: true,
+            required: true,
+            lowercase: true
         },
         id: {
             type: ObjectId,

@@ -12,6 +12,9 @@ exports.findUserByEmail = async (email) => {
 exports.getAllUserService = async () => {
     return await User.find({});
 };
+exports.getUserByIdService = async (id) => {
+    return await User.findById(id);
+};
 
 // exports.findUserByToken = async (token) => {
 //   return await User.findOne({ confirmationToken: token });
