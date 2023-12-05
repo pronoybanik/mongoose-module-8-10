@@ -1,4 +1,4 @@
-const { OrderService, getOrderService, deleteOrderService } = require("../services/order.service");
+const { OrderService, getOrderService, deleteOrderService, updateOrderByIdService } = require("../services/order.service");
 
 
 
@@ -44,6 +44,8 @@ exports.getOrder = async (req, res, next) => {
         });
     }
 };
+
+
 
 exports.deleteOrder = async (req, res, next) => {
     try {

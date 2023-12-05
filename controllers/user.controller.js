@@ -1,5 +1,5 @@
 
-const { signupService, findUserByEmail, findUserByToken, getAllUserService, getUserByIdService } = require("../services/user.service");
+const { signupService, findUserByEmail, findUserByToken, getAllUserService, getUserByIdService, updateUserByIdService, deleteUserByIdService } = require("../services/user.service");
 const { generateToken } = require("../utils/token");
 // const { sendMailWithGmail, sendMailWithMailGun } = require("../utils/email");
 // const { generateToken } = require("../utils/token");
@@ -140,7 +140,7 @@ exports.getAllUser = async (req, res) => {
 exports.getUserById = async (req, res) => {
     try {
         const user = await getUserByIdService(req.params.id);
-       
+
         res.status(200).json({
             status: "success",
             data: user,
@@ -153,44 +153,49 @@ exports.getUserById = async (req, res) => {
     }
 };
 
-// exports.confirmEmail = async (req, res) => {
-//   try {
-//     const { token } = req.params;
+exports.updateUserById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const result = await updateUserByIdService(id, req.body);
 
 
-//     const user = await findUserByToken(token);
+        res.status(200).json({
+            status: "success",
+            message: "Successfully updated the Store",
+            data: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "Couldn't update the Store",
+            error: error.message,
+        });
+    }
+};
 
-//     if(!user){
-//       return res.status(403).json({
-//         status: "fail",
-//         error: "Invalid token"
-//       });
-//     }
+exports.deleteUserById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
 
-//     const expired = new Date() > new Date(user.confirmationTokenExpires);
+        const result = await deleteUserByIdService(id);
 
-//     if(expired){
-//       return res.status(401).json({
-//         status: "fail",
-//         error: "Token expired"
-//       });
-//     }
+        if (!result.deletedCount) {
+            return res.status(400).json({
+                status: "fail",
+                error: "Couldn't delete the Store"
+            })
+        }
 
-//     user.status = "active";
-//     user.confirmationToken = undefined;
-//     user.confirmationTokenExpires = undefined;
+        res.status(200).json({
+            status: "success",
+            message: "Successfully deleted the Store",
 
-//     user.save({ validateBeforeSave: false });
-
-//     res.status(200).json({
-//       status: "success",
-//       message: "Successfully activated your account.",
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({
-//       status: "fail",
-//       error,
-//     });
-//   }
-// };
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "Couldn't delete the Store",
+            error: error.message,
+        });
+    }
+};

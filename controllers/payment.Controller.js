@@ -1,5 +1,5 @@
 const PaymentItem = require("../models/Payment");
-const { OrderPaymentService, getOrderPaymentService, successService, deleteOrderPaymentService } = require("../services/payment.service");
+const { OrderPaymentService, getOrderPaymentService, successService, deleteOrderPaymentService, updateOrderPaymentByIdService } = require("../services/payment.service");
 const SSLCommerzPayment = require('sslcommerz-lts')
 const crypto = require('crypto');
 
@@ -117,35 +117,25 @@ exports.deleteOrderPayment = async (req, res, next) => {
 };
 
 
-// exports.success = async (req, res, next) => {
-//     try {
-//         console.log("data 1", req.params.id);
-//         // const result = await successService(req.params.id);
-//         // console.log("reslut", result);
+exports.updateOrderPaymentById = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const result = await updateOrderPaymentByIdService(id, req.body);
 
 
-//         res.status(200).json({
-//             status: "success",
-//             data: result,
-//         });
-//     } catch (error) {
-//         console.log(error);
-//         res.status(400).json({
-//             status: "fail",
-//             message: "Couldn't get the payment",
-//             error: error.message
-//         });
-//     }
-// };
-
-
-
-
-
-
-
-
-
+        res.status(200).json({
+            status: "success",
+            message: "Successfully updated the Store",
+            data: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "fail",
+            message: "Couldn't update the Store",
+            error: error.message,
+        });
+    }
+};
 
 
 

@@ -53,8 +53,8 @@ const paymentItemSchema = new mongoose.Schema({
     },
     shippingStatus: {
         type: String,
-        enum: ['processing', 'shipped', "delivered"],
-        default: 'save',
+        enum: ['pending', 'processing', 'shipped', "delivered"],
+        default: 'pending',
     },
 });
 

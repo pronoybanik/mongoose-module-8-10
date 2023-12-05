@@ -11,7 +11,11 @@ router.post("/login", userController.login);
 
 router.get("/me", verifyToken, userController.getMe);
 router.get("/", userController.getAllUser);
-router.get("/:id", userController.getUserById);
 
+
+router.route("/:id")
+    .get(userController.getUserById)
+    .patch(userController.updateUserById)
+    .delete(userController.deleteUserById)
 
 module.exports = router;

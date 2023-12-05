@@ -16,6 +16,20 @@ exports.getUserByIdService = async (id) => {
     return await User.findById(id);
 };
 
-// exports.findUserByToken = async (token) => {
-//   return await User.findOne({ confirmationToken: token });
-// };
+exports.updateUserByIdService = async (userId, data) => {
+    const result = await User.updateOne(
+        { _id: userId },
+        data,
+        {
+            runValidators: true,
+        }
+    );
+
+    return result;
+};
+
+
+exports.deleteUserByIdService = async (id) => {
+    const result = await User.deleteOne({ _id: id });
+    return result;
+};

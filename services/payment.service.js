@@ -15,18 +15,17 @@ exports.deleteOrderPaymentService = async (id) => {
     return order;
 };
 
-// exports.successService = async (id) => {
-//     console.log("data 2", id);
-//     const result = await PaymentItem.updateOne(
-//         { _id: id },
-//         {
-//             $set: {
-//                 paymentStatus:
-//                     "paid"
-//             }
-//         },
-//         console.log("data 3", result)
-//     )
-//     return result;
-// };
+exports.updateOrderPaymentByIdService = async (userId, data) => {
+    const result = await PaymentItem.updateOne(
+        { _id: userId },
+        data,
+        {
+            runValidators: true,
+        }
+    );
+
+    return result;
+};
+
+
 

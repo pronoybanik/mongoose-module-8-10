@@ -11,6 +11,7 @@ router.route('/')
 
 
 router.route('/:id')
+    .patch(paymentController.updateOrderPaymentById)
     .delete(paymentController.deleteOrderPayment)
 
 
