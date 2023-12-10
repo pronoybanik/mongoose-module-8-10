@@ -3,10 +3,12 @@ const Stock = require("../models/stock")
 exports.getStocksService = async (filters, queries) => {
 
     const stocks = await Stock.find(filters)
+    
         .skip(queries.skip)
         .limit(queries.limit)
         .select(queries.fields)
         .sort(queries.sortBy)
+        .populate("supplied.id")
 
     const total = await Stock.countDocuments(filters);
     const page = Math.ceil(total / queries.limit);

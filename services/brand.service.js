@@ -9,12 +9,12 @@ exports.getBrandsService = async (filters, queries) => {
         .limit(queries.limit)
         .select(queries.fields)
         .sort(queries.sortBy)
-        // .populate('brand.id')
+    // .populate('brand.id')
 
-    const total = await Brand.countDocuments(filters);
-    const page = Math.ceil(total / queries.limit);
-
-    return { total, count: brands.length, page, brands };
+    const totalBrand = await Brand.countDocuments(filters);
+    const numberOfPage = Math.ceil(totalBrand / queries.limit);
+    const currentPage = Number(queries.page);
+    return { totalBrand, count: brands.length, currentPage, numberOfPage, brands };
 };
 
 exports.createBrandService = async (data) => {

@@ -56,6 +56,15 @@ exports.getBrands = async (req, res, next) => {
 
         }
 
+        if (req.query.page) {
+
+            const { page } = req.query;
+            const currentPage = page;
+            queries.page = currentPage
+            
+
+        }
+
         const brands = await getBrandsService(filters, queries);
 
         if (brands.length === 0) {

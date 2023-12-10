@@ -73,10 +73,7 @@ const supplierSchema = mongoose.Schema(
                 message: "{VALUE} is not  acorrect division!",
             },
         },
-        imageURL: {
-            type: String,
-            validate: [validator.isURL, "Please provide a valid url"],
-        },
+     
         nationalIdImageURL: {
             type: String,
             required: true,

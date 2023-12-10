@@ -47,14 +47,14 @@ exports.createOrderPayment = async (req, res, next) => {
             ship_postcode: 1000,
             ship_country: 'Bangladesh',
         };
+
         const sslcz = new SSLCommerzPayment(store_id, store_passwd, is_live);
         sslcz.init(data).then(async (apiResponse) => {
             // Redirect the user to the payment gateway
             const GatewayPageURL = apiResponse.GatewayPageURL;
             res.send({ url: GatewayPageURL });
-
-
         });
+
 
 
     } catch (error) {
@@ -120,7 +120,8 @@ exports.deleteOrderPayment = async (req, res, next) => {
 exports.updateOrderPaymentById = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const result = await updateOrderPaymentByIdService(id, req.body);
+        console.log("update Id", id);
+        // const result = await updateOrderPaymentByIdService(id, req.body);
 
 
         res.status(200).json({
