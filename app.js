@@ -1,13 +1,13 @@
 const express = require("express");
 const app = express();
-const SSLCommerzPayment = require('sslcommerz-lts')
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv").config();
+require("colors");
 
 //middlewares
 app.use(express.json());
 app.use(cors());
-
 
 
 // routes
@@ -20,11 +20,6 @@ const storeRoute = require('./routes/store.route');
 const userRoute = require('./routes/user.route');
 const orderRoute = require('./routes/order.route');
 const paymentRoute = require('./routes/payment.route');
-
-
-app.get("/", (req, res) => {
-    res.send("Route is working! YaY!");
-});
 
 
 app.use('/api/v1/product', productRoute);
@@ -43,6 +38,22 @@ app.use("/api/v1/payment", paymentRoute);
 // const crypto = require('crypto');
 // const randomBytes = crypto.randomBytes(10).toString('hex');
 // console.log(randomBytes);
+
+
+mongoose.connect(process.env.DATABASE).then(() => {
+    console.log('database connection is successful'.red);
+});
+
+// server port:
+const port = process.env.PORT || 5050;
+
+app.listen(port, () => {
+    console.log(`App is running on port ${port}`.yellow.bold);
+});
+
+app.get("/", (req, res) => {
+    res.send("Route is working! YaY!");
+});
 
 module.exports = app;
 
