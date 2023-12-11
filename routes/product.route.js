@@ -10,9 +10,8 @@ router.post("/file-upload", fileUploader.single("image"), productController.file
 // router.post("/file-upload", fileUploader.array("image"), productController.fileUpload)
 
 router.route('/')
-    // .get(verifyToken, authorization("buyer"),productController.getProducts)
     .get(productController.getProducts)
-    .post(productController.createProduct)
+    .post(verifyToken, authorization("storeManager"), productController.createProduct)
 
 router.route("/:id")
     .get(productController.getProductById)

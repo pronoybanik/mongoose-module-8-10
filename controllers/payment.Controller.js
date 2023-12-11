@@ -121,7 +121,7 @@ exports.updateOrderPaymentById = async (req, res, next) => {
     try {
         const { id } = req.params;
         console.log("update Id", id);
-        // const result = await updateOrderPaymentByIdService(id, req.body);
+        const result = await updateOrderPaymentByIdService(id, req.body);
 
 
         res.status(200).json({

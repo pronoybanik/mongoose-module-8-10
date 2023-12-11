@@ -1,6 +1,7 @@
 const express = require("express");
 const userController = require("../controllers/user.controller");
 const verifyToken = require("../middleware/verifyToken");
+const authorization = require("../middleware/authorization");
 const router = express.Router();
 
 
@@ -15,7 +16,7 @@ router.get("/", userController.getAllUser);
 
 router.route("/:id")
     .get(userController.getUserById)
-    .patch(userController.updateUserById)
+    .patch(verifyToken, authorization("storeManager"), userController.updateUserById)
     .delete(userController.deleteUserById)
 
 module.exports = router;
